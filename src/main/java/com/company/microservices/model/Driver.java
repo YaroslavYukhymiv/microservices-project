@@ -1,4 +1,4 @@
-package com.voysovych.finalproject.model;
+package com.company.microservices.model;
 
 import java.io.Serializable;
 import java.util.Date;

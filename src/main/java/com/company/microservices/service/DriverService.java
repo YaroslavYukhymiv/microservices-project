@@ -1,6 +1,6 @@
-package com.voysovych.finalproject.service;
+package com.company.microservices.service;
 
-import com.voysovych.finalproject.model.Driver;
+import com.company.microservices.model.Driver;
 
 import java.util.List;
 

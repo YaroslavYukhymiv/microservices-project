@@ -1,6 +1,6 @@
-package com.voysovych.finalproject.repository;
+package com.company.microservices.repository;
 
-import com.voysovych.finalproject.model.Driver;
+import com.company.microservices.model.Driver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;

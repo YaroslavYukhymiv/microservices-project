@@ -1,7 +1,7 @@
-package com.voysovych.finalproject.service;
+package com.company.microservices.service;
 
-import com.voysovych.finalproject.model.Driver;
-import com.voysovych.finalproject.repository.DriverDao;
+import com.company.microservices.model.Driver;
+import com.company.microservices.repository.DriverDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

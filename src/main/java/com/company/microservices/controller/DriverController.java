@@ -1,7 +1,7 @@
-package com.voysovych.finalproject.controller;
+package com.company.microservices.controller;
 
-import com.voysovych.finalproject.model.Driver;
-import com.voysovych.finalproject.service.DriverService;
+import com.company.microservices.model.Driver;
+import com.company.microservices.service.DriverService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

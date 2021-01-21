@@ -1,4 +1,4 @@
-package com.voysovych.finalproject;
+package com.company.microservices;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
