@@ -1,6 +1,6 @@
 package com.company.microservices.service;
 
-import com.company.microservices.model.Driver;
+import com.company.microservices.model.Employee;
 import com.company.microservices.repository.DriverDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,17 +14,17 @@ public class DriverServiceImpl implements DriverService{
     private DriverDao driverDao;
 
     @Override
-    public boolean saveDriver(Driver driver) {
-        return driverDao.saveDriver(driver);
+    public boolean saveDriver(Employee employee) {
+        return driverDao.saveDriver(employee);
     }
 
     @Override
-    public List<Driver> allDrivers() {
+    public List<Employee> allDrivers() {
         return driverDao.allDrivers();
     }
 
     @Override
-    public Driver findById(Long id) {
+    public Employee findById(Long id) {
         return driverDao.findById(id);
     }
 

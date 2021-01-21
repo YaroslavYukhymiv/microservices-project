@@ -1,6 +1,6 @@
 package com.company.microservices.repository;
 
-import com.company.microservices.model.Driver;
+import com.company.microservices.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
@@ -16,9 +16,9 @@ public class DriverDaoImpl implements DriverDao{
     private static final String KEY = "DRIVER";
 
     @Override
-    public boolean saveDriver(Driver driver) {
+    public boolean saveDriver(Employee employee) {
         try {
-            redisTemplate.opsForHash().put(KEY, driver.getId().toString(), driver);
+            redisTemplate.opsForHash().put(KEY, employee.getId().toString(), employee);
             return true;
         }catch (Exception e){
             e.printStackTrace();
@@ -27,17 +27,17 @@ public class DriverDaoImpl implements DriverDao{
     }
 
     @Override
-    public List<Driver> allDrivers() {
-        List<Driver> drivers;
-        drivers = redisTemplate.opsForHash().values(KEY);
-        return drivers;
+    public List<Employee> allDrivers() {
+        List<Employee> employees;
+        employees = redisTemplate.opsForHash().values(KEY);
+        return employees;
     }
 
     @Override
-    public Driver findById(Long id) {
-        Driver driver;
-        driver = (Driver) redisTemplate.opsForHash().get(KEY, id.toString());
-        return driver;
+    public Employee findById(Long id) {
+        Employee employee;
+        employee = (Employee) redisTemplate.opsForHash().get(KEY, id.toString());
+        return employee;
     }
 
     @Override

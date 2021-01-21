@@ -3,7 +3,7 @@ package com.company.microservices.model;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Driver implements Serializable {
+public class Employee implements Serializable {
 
     private Long id;
     private String company;
@@ -12,7 +12,7 @@ public class Driver implements Serializable {
     private int longitude;
     private int latitude;
 
-    public Driver() {
+    public Employee() {
     }
 
     public Long getId() {
