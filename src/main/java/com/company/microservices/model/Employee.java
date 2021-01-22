@@ -62,4 +62,16 @@ public class Employee implements Serializable {
     public void setLatitude(int latitude) {
         this.latitude = latitude;
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", company='" + company + '\'' +
+                ", resource='" + resource + '\'' +
+                ", time=" + time +
+                ", longitude=" + longitude +
+                ", latitude=" + latitude +
+                '}';
+    }
 }
