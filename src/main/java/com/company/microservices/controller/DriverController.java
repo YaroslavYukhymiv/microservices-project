@@ -48,4 +48,11 @@ public class DriverController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
+
+    @GetMapping("/getResource")
+    public ResponseEntity<Employee> gerResource(String resource) {
+        Employee employee;
+        employee = driverService.findById(resource);
+        return ResponseEntity.ok(employee);
+    }
 }

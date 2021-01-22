@@ -13,4 +13,6 @@ public interface DriverService {
     Employee findById(Long id);
 
     boolean deleteDriver(Long id);
+
+    Employee findById(String resource);
 }

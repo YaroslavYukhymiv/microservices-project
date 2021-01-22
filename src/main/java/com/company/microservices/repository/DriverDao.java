@@ -13,4 +13,6 @@ public interface DriverDao {
     Employee findById(Long id);
 
     boolean deleteById(Long id);
+
+    Employee findByResource(String resource);
 }
