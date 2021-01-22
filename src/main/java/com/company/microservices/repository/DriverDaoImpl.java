@@ -51,4 +51,11 @@ public class DriverDaoImpl implements DriverDao{
             return false;
         }
     }
+
+    @Override
+    public Employee findByResource(String resource) {
+        Employee employee;
+        employee = (Employee) redisTemplate.opsForHash().get(KEY, resource);
+        return employee;
+    }
 }

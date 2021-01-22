@@ -32,4 +32,9 @@ public class DriverServiceImpl implements DriverService{
     public boolean deleteDriver(Long id) {
         return driverDao.deleteById(id);
     }
+
+    @Override
+    public Employee findById(String resource) {
+        return driverDao.findByResource(resource);
+    }
 }
