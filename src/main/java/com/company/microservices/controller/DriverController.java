@@ -55,4 +55,22 @@ public class DriverController {
         employee = driverService.findById(resource);
         return ResponseEntity.ok(employee);
     }
+
+    @PostMapping("/employee")
+    public ResponseEntity<String> saveEmployee(@RequestBody Employee employee) {
+        boolean result = driverService.saveEmployee(employee);
+        if(result){
+            return ResponseEntity.ok("Employee Created Successfully!!!");
+        }else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+    }
+
+    @GetMapping("/employee")
+    public ResponseEntity<List<Employee>> allEmployee() {
+        List<Employee> employees;
+        employees = driverService.allDrivers();
+        return ResponseEntity.ok(employees);
+    }
+
 }

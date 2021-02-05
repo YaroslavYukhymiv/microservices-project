@@ -3,6 +3,7 @@ package com.company.microservices.repository;
 import com.company.microservices.model.Employee;
 
 import java.util.List;
+import java.util.Set;
 
 public interface DriverDao {
 
@@ -15,4 +16,10 @@ public interface DriverDao {
     boolean deleteById(Long id);
 
     Employee findByResource(String resource);
+
+    boolean saveEmployee(Employee employee);
+
+    Set<Employee> allPointsOfResource(String resource);
+
+    Set<Employee> lastPointOfResource (String resource);
 }

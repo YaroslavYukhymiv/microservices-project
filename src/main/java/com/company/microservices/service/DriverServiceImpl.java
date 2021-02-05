@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class DriverServiceImpl implements DriverService{
@@ -37,4 +38,15 @@ public class DriverServiceImpl implements DriverService{
     public Employee findById(String resource) {
         return driverDao.findByResource(resource);
     }
+
+    @Override
+    public boolean saveEmployee(Employee employee) {
+        return driverDao.saveEmployee(employee);
+    }
+
+    @Override
+    public Set<Employee> lastPointOfResource(String resource) {
+        return driverDao.lastPointOfResource(resource);
+    }
+
 }
