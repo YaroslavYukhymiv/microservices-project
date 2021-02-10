@@ -63,18 +63,27 @@ public class DriverDaoImpl implements DriverDao{
     public boolean saveEmployee(Employee employee) {
 
         try {
-            String data = employee.getTime().toString();
-            String[] splitData = data.split("T");
-            String[] splitDataOne = splitData[0].split("-");
-            String[] splitDataTwo = splitData[1].split(":");
-            String result = new String();
+            StringBuilder sb = new StringBuilder(employee.getTime().toString());
+            sb.deleteCharAt(4);
+            sb.deleteCharAt(7);
+            sb.deleteCharAt(10);
+            sb.deleteCharAt(13);
+            sb.deleteCharAt(16);
 
-            for (String s : splitDataOne) {
-                result = result + s;
-            }
-            for (String s : splitDataTwo) {
-                result = result + s;
-            }
+            String result = sb.toString();
+
+//            String data = employee.getTime().toString();
+//            String[] splitData = data.split("T");
+//            String[] splitDataOne = splitData[0].split("-");
+//            String[] splitDataTwo = splitData[1].split(":");
+//            String result = new String();
+//
+//            for (String s : splitDataOne) {
+//                result = result + s;
+//            }
+//            for (String s : splitDataTwo) {
+//                result = result + s;
+//            }
             Double score = Double.parseDouble(result);
 
             redisTemplate.opsForZSet().add(employee.getResource(), employee, score);
