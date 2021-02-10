@@ -2,15 +2,18 @@ package com.company.microservices.repository;
 
 import com.company.microservices.model.Employee;
 
-import java.util.List;
+import java.util.Set;
 
 public interface DriverDao {
 
-    boolean saveDriver(Employee employee);
+    void saveDriver(Employee employee);
 
-    List<Employee> allDrivers();
+    Set<Employee> allDrivers(String resource);
 
-    Employee findById(Long id);
+    Set<Employee> lastPointEmployee(String resource);
 
-    boolean deleteById(Long id);
+//    Employee findById(Long id);
+//
+//    boolean deleteById(Long id);
+
 }

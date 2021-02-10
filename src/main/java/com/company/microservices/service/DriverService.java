@@ -3,14 +3,19 @@ package com.company.microservices.service;
 import com.company.microservices.model.Employee;
 
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 public interface DriverService {
 
-    boolean saveDriver(Employee employee);
+    void saveDriver(Employee employee);
 
-    List<Employee> allDrivers();
+    Set<Employee> allDrivers(String resource);
 
-    Employee findById(Long id);
+    Set<Employee> lastPointEmployee(String resource);
 
-    boolean deleteDriver(Long id);
+//    Employee findById(Long id);
+//
+//    boolean deleteDriver(Long id);
+
 }

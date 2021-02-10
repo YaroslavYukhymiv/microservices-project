@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 public class DriverController {
@@ -17,35 +18,43 @@ public class DriverController {
 
     @PostMapping("/driver")
     public ResponseEntity<String> saveDriver(@RequestBody Employee employee) {
-        boolean result = driverService.saveDriver(employee);
-        if(result){
-            return ResponseEntity.ok("Employee Created Successfully!!!");
-        }else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        }
+        driverService.saveDriver(employee);
+        return ResponseEntity.ok("Employee Created Successfully!!!");
     }
 
-    @GetMapping("/driver")
-    public ResponseEntity<List<Employee>> allDrivers() {
-        List<Employee> employees;
-        employees = driverService.allDrivers();
+    @GetMapping ("/findDriver")
+    public ResponseEntity<Set<Employee>> allDrivers(@RequestParam String resource) {
+        Set<Employee> employees;
+        employees = driverService.allDrivers(resource);
         return ResponseEntity.ok(employees);
     }
 
-    @GetMapping("/driver/{id}")
-    public ResponseEntity<Employee> findDriverById(@PathVariable("id") Long id) {
-        Employee employee;
-        employee = driverService.findById(id);
+
+    @GetMapping("/lastPoint")
+    public ResponseEntity<Employee> lastPoint(@RequestParam String resource) {
+        Employee employee = new Employee();
+        Set<Employee> employees;
+        employees = driverService.lastPointEmployee(resource);
+        for (Employee e : employees) {
+            employee = e;
+        }
         return ResponseEntity.ok(employee);
     }
 
-    @DeleteMapping("/driver/{id}")
-    public ResponseEntity<String> deleteDriver(@PathVariable("id") Long id) {
-        boolean result = driverService.deleteDriver(id);
-        if(result){
-            return ResponseEntity.ok("Employee deleted Successfully!!!");
-        }else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        }
-    }
+//    @GetMapping("/driver/{id}")
+//    public ResponseEntity<Employee> findDriverById(@PathVariable("id") Long id) {
+//        Employee employee;
+//        employee = driverService.findById(id);
+//        return ResponseEntity.ok(employee);
+//    }
+//
+//    @DeleteMapping("/driver/{id}")
+//    public ResponseEntity<String> deleteDriver(@PathVariable("id") Long id) {
+//        boolean result = driverService.deleteDriver(id);
+//        if(result){
+//            return ResponseEntity.ok("Employee deleted Successfully!!!");
+//        }else {
+//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+//        }
+//    }
 }

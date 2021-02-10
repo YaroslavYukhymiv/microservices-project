@@ -1,26 +1,26 @@
 package com.company.microservices.model;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Employee implements Serializable {
 
-    private Long id;
     private String company;
     private String resource;
-    private Date time;
+    private LocalDateTime time;
     private int longitude;
     private int latitude;
 
     public Employee() {
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public Employee(String company, String resource, LocalDateTime time, int longitude, int latitude) {
+        this.company = company;
+        this.resource = resource;
+        this.time = time;
+        this.longitude = longitude;
+        this.latitude = latitude;
     }
 
     public String getCompany() {
@@ -39,11 +39,11 @@ public class Employee implements Serializable {
         this.resource = resource;
     }
 
-    public Date getTime() {
+    public LocalDateTime getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(LocalDateTime time) {
         this.time = time;
     }
 
@@ -66,7 +66,6 @@ public class Employee implements Serializable {
     @Override
     public String toString() {
         return "Employee{" +
-                "id=" + id +
                 ", company='" + company + '\'' +
                 ", resource='" + resource + '\'' +
                 ", time=" + time +
