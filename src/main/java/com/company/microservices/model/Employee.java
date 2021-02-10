@@ -1,6 +1,7 @@
 package com.company.microservices.model;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Employee implements Serializable {
@@ -8,7 +9,7 @@ public class Employee implements Serializable {
     private Long id;
     private String company;
     private String resource;
-    private Date time;
+    private LocalDateTime time;
     private int longitude;
     private int latitude;
 
@@ -39,11 +40,11 @@ public class Employee implements Serializable {
         this.resource = resource;
     }
 
-    public Date getTime() {
+    public LocalDateTime getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(LocalDateTime time) {
         this.time = time;
     }
 

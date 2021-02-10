@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 public class DriverController {
@@ -55,4 +56,32 @@ public class DriverController {
         employee = driverService.findById(resource);
         return ResponseEntity.ok(employee);
     }
+
+    @PostMapping("/employee")
+    public ResponseEntity<String> saveEmployee(@RequestBody Employee employee) {
+        boolean result = driverService.saveEmployee(employee);
+        if(result){
+            return ResponseEntity.ok("Employee Created Successfully!!!");
+        }else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+    }
+
+    @GetMapping("/employee")
+    public ResponseEntity<List<Employee>> allEmployee() {
+        List<Employee> employees;
+        employees = driverService.allDrivers();
+        return ResponseEntity.ok(employees);
+    }
+
+    @GetMapping("/employee")
+    public ResponseEntity<Employee> lastPointOfEmployee(@RequestParam String name) {
+        Employee employee = null;
+        Set<Employee> employeeSet = driverService.lastPointOfResource(name);
+        for (Employee e: employeeSet){
+            employee = e;
+        }
+        return ResponseEntity.ok(employee);
+    }
+
 }
