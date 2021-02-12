@@ -2,7 +2,6 @@ package com.company.microservices.model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 public class Employee implements Serializable {
 

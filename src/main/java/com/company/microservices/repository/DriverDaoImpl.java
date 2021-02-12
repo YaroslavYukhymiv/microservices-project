@@ -10,8 +10,12 @@ import java.util.Set;
 @Repository
 public class DriverDaoImpl implements DriverDao{
 
-    @Autowired
     private RedisTemplate redisTemplate;
+
+    @Autowired
+    public DriverDaoImpl(RedisTemplate redisTemplate) {
+        this.redisTemplate = redisTemplate;
+    }
 
     @Override
     public void saveDriver(Employee employee) {
@@ -20,46 +24,29 @@ public class DriverDaoImpl implements DriverDao{
             for (int i = 4; i < 14; i = i + 2) {
                 date = date.deleteCharAt(i);
             }
-
-            Double score = Double.parseDouble(date.toString());
-
-            redisTemplate.opsForZSet().add(employee.getResource(), employee, score);
+            redisTemplate.opsForZSet().add(employee.getResource(), employee, (Double.parseDouble(date.toString())));
         }catch (Exception e){
             e.printStackTrace();
         }
     }
 
-
     @Override
-    public Set<Employee> allDrivers(String resource) {
+    public Set<Employee> findAllWayOfDriver(String resource) {
         Set<Employee> employees;
         employees = redisTemplate.opsForZSet().range(resource, 0, redisTemplate.opsForZSet().size(resource));
         return employees;
     }
 
     @Override
-    public Set<Employee> lastPointEmployee(String resource) {
-        Set<Employee> employees;
-        employees = redisTemplate.opsForZSet().range(resource, (redisTemplate.opsForZSet().size(resource) - 1), redisTemplate.opsForZSet().size(resource));
-        return employees;
+    public Employee lastPointOfDriver(String resource) {
+        Set<Employee> employee = redisTemplate.opsForZSet().range(resource,
+                (redisTemplate.opsForZSet().size(resource) - 1),
+                 redisTemplate.opsForZSet().size(resource));
+
+        Employee lastPointOfEmployee = null;
+        for (Employee e : employee) {
+             lastPointOfEmployee = e;
+        }
+        return lastPointOfEmployee;
     }
-
-//    @Override
-//    public Employee findById(Long id) {
-//        Employee employee;
-//        employee = (Employee) redisTemplate.opsForHash().get(KEY, id.toString());
-//        return employee;
-//    }
-//
-//    @Override
-//    public boolean deleteById(Long id) {
-//        try {
-//            redisTemplate.opsForHash().delete(KEY, id.toString());
-//            return true;
-//        }catch (Exception e){
-//            e.printStackTrace();
-//            return false;
-//        }
-//    }
-
 }

@@ -13,8 +13,12 @@ import java.util.Set;
 @Service
 public class DriverServiceImpl implements DriverService{
 
-    @Autowired
     private DriverDao driverDao;
+
+    @Autowired
+    public DriverServiceImpl(DriverDao driverDao) {
+        this.driverDao = driverDao;
+    }
 
     @Override
     public void saveDriver(Employee employee) {
@@ -22,23 +26,12 @@ public class DriverServiceImpl implements DriverService{
     }
 
     @Override
-    public Set<Employee> allDrivers(String resource) {
-        return driverDao.allDrivers(resource);
+    public Set<Employee> findAllWayOfDriver(String resource) {
+        return driverDao.findAllWayOfDriver(resource);
     }
 
     @Override
-    public Set<Employee> lastPointEmployee(String resource) {
-        return driverDao.lastPointEmployee(resource);
+    public Employee lastPointOfDriver(String resource) {
+        return driverDao.lastPointOfDriver(resource);
     }
-
-//    @Override
-//    public Employee findById(Long id) {
-//        return driverDao.findById(id);
-//    }
-//
-//    @Override
-//    public boolean deleteDriver(Long id) {
-//        return driverDao.deleteById(id);
-//    }
-
 }

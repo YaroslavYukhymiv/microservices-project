@@ -8,12 +8,7 @@ public interface DriverDao {
 
     void saveDriver(Employee employee);
 
-    Set<Employee> allDrivers(String resource);
+    Set<Employee> findAllWayOfDriver(String resource);
 
-    Set<Employee> lastPointEmployee(String resource);
-
-//    Employee findById(Long id);
-//
-//    boolean deleteById(Long id);
-
+    Employee lastPointOfDriver(String resource);
 }
