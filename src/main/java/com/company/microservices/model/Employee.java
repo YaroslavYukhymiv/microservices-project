@@ -2,19 +2,20 @@ package com.company.microservices.model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class Employee implements Serializable {
 
     private String company;
     private String resource;
     private LocalDateTime time;
-    private int longitude;
-    private int latitude;
+    private double longitude;
+    private double latitude;
 
     public Employee() {
     }
 
-    public Employee(String company, String resource, LocalDateTime time, int longitude, int latitude) {
+    public Employee(String company, String resource, LocalDateTime time, double longitude, double latitude) {
         this.company = company;
         this.resource = resource;
         this.time = time;
@@ -46,30 +47,43 @@ public class Employee implements Serializable {
         this.time = time;
     }
 
-    public int getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(int longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 
-    public int getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(int latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
     @Override
     public String toString() {
         return "Employee{" +
-                ", company='" + company + '\'' +
+                "company='" + company + '\'' +
                 ", resource='" + resource + '\'' +
                 ", time=" + time +
                 ", longitude=" + longitude +
                 ", latitude=" + latitude +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return Double.compare(employee.longitude, longitude) == 0 && Double.compare(employee.latitude, latitude) == 0 && Objects.equals(company, employee.company) && Objects.equals(resource, employee.resource) && Objects.equals(time, employee.time);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(company, resource, time, longitude, latitude);
     }
 }
